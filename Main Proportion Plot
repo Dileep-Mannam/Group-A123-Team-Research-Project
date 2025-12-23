@@ -1,1 +1,12 @@
+#  Proportion (stacked) bar plot - MAIN PLOT
+p <- ggplot(df, aes(x = CoreGroup, fill = Status)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Proportions of CPU Status by Core Group (Intel 2014–2019)",
+    x = "Core Group (Cores)",
+    y = "Proportion"
+  ) +
+  theme_minimal()
 
+ggsave("Proportion_Status_by_CoreGroup.png", p, width = 8, height = 5, dpi = 300)
+print(p)
