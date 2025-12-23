@@ -1,1 +1,15 @@
+#  Convert Cores to numeric and create CoreGroup
+df <- df %>%
+  mutate(Cores_num = as.numeric(Cores),
+         CoreGroup = case_when(
+           Cores_num <= 2 ~ "2",
+           Cores_num <= 4 ~ "3-4",
+           Cores_num <= 8 ~ "5-8",
+           Cores_num <= 16 ~ "9-16",
+           TRUE ~ "17+"
+         ))
 
+df$CoreGroup <- factor(df$CoreGroup, levels = c("2", "3-4", "5-8", "9-16", "17+"))
+
+# Remove missing CoreGroup if any
+df <- df[!is.na(df$CoreGroup), ]
