@@ -1,1 +1,6 @@
+# Libraries
+library(tidyverse)
+library(ggplot2)
 
+#  Load Dataset
+df <- read_csv("E:/Team Research Group Assign/intel.csv", show_col_types = FALSE)
