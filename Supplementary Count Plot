@@ -1,1 +1,12 @@
+#  Count bar plot - SUPPLEMENTARY PLOT
+p2 <- ggplot(df, aes(x = CoreGroup, fill = Status)) +
+  geom_bar(position = "stack") +
+  labs(
+    title = "Counts of CPU Status by Core Group (Intel 2014–2019)",
+    x = "Core Group (Cores)",
+    y = "Count"
+  ) +
+  theme_minimal()
 
+ggsave("Count_Status_by_CoreGroup.png", p2, width = 8, height = 5, dpi = 300)
+print(p2)
