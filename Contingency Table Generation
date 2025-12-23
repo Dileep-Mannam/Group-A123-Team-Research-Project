@@ -1,1 +1,8 @@
+#  Build Contingency Table (Required)
+tab <- table(df$CoreGroup, df$Status)
 
+print("Contingency Table:")
+print(tab)
+
+# Save table for Appendix
+write.csv(as.data.frame(tab), "contingency_table.csv", row.names = FALSE)
