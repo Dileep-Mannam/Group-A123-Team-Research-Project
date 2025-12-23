@@ -1,1 +1,25 @@
+#  Extract Year from different Release Date formats
+parse_year <- function(x) {
+  s <- as.character(x)
+  
+  # Try 4-digit year
+  four <- stringr::str_extract(s, "\\d{4}")
+  if (!is.na(four)) return(as.integer(four))
+  
+  # Try 2-digit year with apostrophe (e.g., 18')
+  two <- stringr::str_extract(s, "(\\d{2})'")
+  if (!is.na(two)) {
+    y <- as.integer(gsub("'", "", two))
+    return(ifelse(y <= 25, 2000 + y, 1900 + y))
+  }
+  
+  # Try last 2 digits
+  twob <- stringr::str_extract(s, "\\d{2}$")
+  if (!is.na(twob)) {
+    y <- as.integer(twob)
+    return(ifelse(y <= 25, 2000 + y, 1900 + y))
+  }
+  
+  return(NA_integer_)
+}
 
