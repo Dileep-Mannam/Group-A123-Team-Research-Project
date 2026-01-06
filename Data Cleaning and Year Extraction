@@ -22,4 +22,3 @@ parse_year <- function(x) {
   
   return(NA_integer_)
 }
-
